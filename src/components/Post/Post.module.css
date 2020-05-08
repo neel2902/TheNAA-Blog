@@ -1,0 +1,10 @@
+.cardImage {
+    height: 200px;
+    background-size: cover;
+    background-position: center;
+}
+
+.cardLink {
+    display: block;
+    text-align: right;
+}

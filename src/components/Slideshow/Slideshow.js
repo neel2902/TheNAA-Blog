@@ -41,25 +41,25 @@ const Slideshow = () => {
             <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/3' }} className={styles.slide} />
             <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/4' }} className={styles.slide} />
         <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/5' }} className={styles.slide} /> */}
-                <div className={styles.myslide} style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/1' }}>
+                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
                     <div className={styles.desc}>
                         <h1>This is a slide</h1>
                         <p>This is its description</p>
                     </div>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/2' }}>
+                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
                     <div className={styles.desc}>
                         <h1>This is a slide</h1>
                         <p>This is its description</p>
                     </div>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/3' }}>
+                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
                     <div className={styles.desc}>
                         <h1>This is a slide</h1>
                         <p>This is its description</p>
                     </div>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/4' }}>
+                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
                     <div className={styles.desc}>
                         <h1>This is a slide</h1>
                         <p>This is its description</p>

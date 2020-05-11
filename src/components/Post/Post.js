@@ -1,7 +1,9 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 // import { Card } from 'react-bootstrap';
 // import styles from './Post.module.css';
 import './Blogcard.css';
+import { Button } from 'react-bootstrap';
 const Post = (props) => {
     return (
         <div className={"blog-card " + props.alt}>
@@ -17,10 +19,10 @@ const Post = (props) => {
                 <h2>Subtitle</h2>
                 <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
                 <p className="read-more">
-                    <a href="/">Read More</a>
+                    <Link to={"/" + props.posttype + "/" + props.postid} ><Button>Read More</Button></Link>
                 </p>
             </div>
-        </div>
+        </div >
     );
 }
 

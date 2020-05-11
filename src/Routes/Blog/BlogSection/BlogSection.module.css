@@ -1,8 +1,8 @@
-.homeposts {
+.zigzag {
     margin: 3em auto 0;
-    width: 90%;
+    width: 100%;
     display: flex;
     flex-wrap: wrap;
     text-align: center;
-    justify-content: space-between;
+    justify-content: space-evenly;
 }

@@ -1,11 +1,11 @@
 import React from 'react';
-import { Nav, Navbar, NavDropdown, Form, FormControl, Button } from 'react-bootstrap';
+import { Nav, Navbar, Form, FormControl, Button } from 'react-bootstrap';
 import { withRouter } from "react-router";
 
 const myNavbar = (props) => {
     const { location } = props;
     return (
-        <Navbar bg="dark" variant="dark" expand="lg">
+        <Navbar bg="light" variant="light" expand="lg">
             <Navbar.Brand href="/">School Blog</Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">

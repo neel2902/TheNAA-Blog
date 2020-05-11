@@ -6,6 +6,7 @@ import About from './Routes/About/About'
 import Blog from './Routes/Blog/Blog'
 import Contact from './Routes/Contact/Contact'
 import NoMatch from './Routes/NoMatch/NoMatch'
+import Fullpost from './Routes/Fullpost/Fullpost';
 
 
 class App extends Component {
@@ -18,6 +19,7 @@ class App extends Component {
             <Route path='/about' component={About} />
             <Route path='/blog' component={Blog} />
             <Route path='/contact' component={Contact} />
+            <Route path='/:posttype/:postid' component={Fullpost} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

@@ -1,0 +1,41 @@
+{
+  "name": "thenaa-blog",
+  "version": "1.0.0",
+  "description": "A blog for Assamese schools.",
+  "main": "index.js",
+  "scripts": {
+    "client": "cd client && npm start",
+    "server": "nodemon server.js",
+    "dev": "npm run server & npm run client",
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node server.js",
+    "heroku-postbuild": "cd client && npm install && npm install --only=dev --no-shrinkwrap && npm run build"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/neel2902/TheNAA-Blog.git"
+  },
+  "keywords": [
+    "react",
+    "express"
+  ],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/neel2902/TheNAA-Blog/issues"
+  },
+  "homepage": "https://github.com/neel2902/TheNAA-Blog#readme",
+  "dependencies": {
+    "body-parse": "^0.1.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "helmet": "^3.22.0",
+    "mongodb": "^3.5.7",
+    "multer": "^1.4.2"
+  },
+  "devDependencies": {
+    "concurrently": "^5.2.0",
+    "morgan": "^1.10.0"
+  }
+}

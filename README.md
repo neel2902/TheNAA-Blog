@@ -1,3 +1,70 @@
+
+# BACKEND DOCUMENTATION
+
+## DataBase
+
+This project uses MongoDB for storing the blogs.
+Either run mongodb locally or use mongodb atlas cluster for the database.
+
+
+
+## Scripts-Developement
+
+One can initialize and run this project using the commands below:
+
+### `npm run dev-build`
+
+Run this to build the developement project and download all dependencies
+
+### `npm run dev`
+
+Run this to start the developement server
+
+The react app will run at localhost:3000. Proxy is used to send the request sent to react app to the backend server which runs at localhost:PORT.
+
+### Scripts-Production
+
+### `npm run heroku-postbuild`
+
+Run this to build the production project and download all dependencies
+
+### `npm start`
+
+Run this to start the production server
+
+Backend server which runs at url:PORT.
+
+## Enviroment Variables
+Add .env file to the project folder with the following contents
+
+NODE_ENV can be `developement or production`
+PORT = on which to run the backend server, for developement purpose use 5000
+NAA_DB_URI = mongodb connection string
+NAA_NS = mongodb database name
+
+## Routes
+
+get `/blog/:postType/:postId` : postType can be ['poem','story','article'...] and postId is the \_id field of the blog object
+
+get `/blogs/:postType` : postType is optional
+
+get `/topBlogs/:postType` : postType is optional
+
+post `/addBlog`: with fields
+
+1. image
+2. title
+3. subtitle
+4. content
+5. author
+6. type
+
+
+Note: for developement of react app send request to app itself, it will redirect it itself to the correct port
+
+
+# FRONTEND DOCUMENTATION
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts

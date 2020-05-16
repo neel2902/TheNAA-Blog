@@ -3,16 +3,17 @@
 const ObjectId = require('bson').ObjectId;
 require('dotenv').config();
 
-let blogs;
+let naa_db;
+let blogs_collection;
 
 module.exports = class UsersDAO {
   static async injectDB(conn) {
-    if (blogs) {
+    if (blogs_collection) {
       return;
     }
     try {
-      let naa_db = await conn.db(process.env.NAA_NS);
-      let blogs = await naa_db.collection('blogs');
+      naa_db = await conn.db(process.env.NAA_NS);
+      blogs_collection = await naa_db.collection('blogs');
     } catch (e) {
       console.error(
         `Unable to establish a collection handle in usersDAO: ${e}`,
@@ -27,9 +28,9 @@ module.exports = class UsersDAO {
     try{
 
       if(postType)
-        topBlogs = await blogs.find({type: postType}).sort({view: -1}).limit(5);
+        topBlogs = await blogs_collection.find({type: postType}).sort({view: -1}).limit(5);
       else
-        topBlogs = await blogs.find().sort({view: -1}).limit(5);
+        topBlogs = await blogs_collection.find({}).sort({view: -1}).limit(5);
     }
     
     catch(e)
@@ -38,7 +39,7 @@ module.exports = class UsersDAO {
       throw e;
     }
 
-    return topBlogs
+    return topBlogs.toArray();
   
   }
 
@@ -49,9 +50,9 @@ module.exports = class UsersDAO {
     try{
   
       if(postType)
-        blogs = await blogs.find({type: postType});
+        blogs = await blogs_collection.find({type: postType});
       else
-        blogs = await blogs.find({});
+        blogs = await blogs_collection.find({});
     }
   
     catch(e){
@@ -59,7 +60,7 @@ module.exports = class UsersDAO {
       throw e;
     }
   
-    return blogs
+    return blogs.toArray();
   }
 
   static async getBlog(postType,postId){ 
@@ -68,11 +69,17 @@ module.exports = class UsersDAO {
 
     try{
   
-      blog = await blogs.findAndModify({
-        query: {type:postType, _id:ObjectId(postId)},
-        update: {$inc:{views: 1}}
-      });
-  
+      blog = await blogs_collection.findOneAndUpdate(
+        {
+          type:postType,
+          _id:ObjectId(postId)
+        },
+        {
+          $inc:
+          {
+            views:1
+          }
+        })
     }
   
     catch(e){
@@ -80,14 +87,18 @@ module.exports = class UsersDAO {
       throw e;
     }
 
-    return blog;
+    if(blog)
+      return blog.value;
+    
+    else
+      return blog;
   }
 
   static async addBlog(blog){
     
     try{
     
-      await blogs.insertOne(blog);  
+      await blogs_collection.insertOne(blog);  
     
     }
     catch(e){

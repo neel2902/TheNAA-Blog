@@ -16,8 +16,12 @@ let app = express();
 const port = process.env.PORT || 5000
 
 MongoClient.connect(
+
   process.env.NAA_DB_URI,
-  { useNewUrlParser: true, useUnifiedTopology: true 
+
+  { 
+  	useNewUrlParser: true,
+  	useUnifiedTopology: true
   })
   .catch(err => {
     

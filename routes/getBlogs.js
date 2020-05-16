@@ -18,11 +18,8 @@ router.get('/blogs/:postType?',async (req,res)=>{
 	
 	}
 	
-	if(blogs)
-		return res.status(200).json(blogs);
+	return res.status(200).json(blogs);
 
-	else
-		return res.statue(404).json({error:"No such Blogs found"});
 })
 
 module.exports = router;

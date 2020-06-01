@@ -1,12 +1,13 @@
-import React, { Component } from 'react'
-
+import React, { Component } from 'react';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import Slideshow from '../../components/Slideshow/Slideshow';
 import Post from '../../components/Post/Post';
+import { Link } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';
 import Footer from '../../components/utilities/Footer/Footer';
 import styles from './Home.module.css'
 
+const axios = require('axios').default;
 const Features = () => {
     return (
         <div style={{ width: '70%', margin: '0 auto' }}>
@@ -52,25 +53,36 @@ const Features = () => {
 }
 
 class Home extends Component {
+    state = {
+        posts: []
+    }
+
+    componentDidMount() {
+        axios.get('/topblogs')
+            .then((response) => {
+                this.setState({ posts: response.data });
+            })
+            .catch(function (error) {
+                console.log(error);
+            });
+    }
 
     render() {
-        const posts = [];
-        const PostGenerator = () => {
-            for (var i = 0; i < 5; i++) {
-                posts.push(<Post />)
-            }
-            return posts;
-        }
+        const posts = this.state.posts.map(post => {
+            return <Post key={post._id} id={post._id} title={post.title} author={post.author} content={post.content} image={post.location} type={post.type} />;
+        });
         return (
             <div style={{ backgroundColor: 'white' }}>
                 <Navbar />
                 <Slideshow />
                 <Features />
                 <div className={styles.homeposts} >
-                    <PostGenerator className={styles.postGen} />
+                    {posts}
                 </div>
                 <Container className="text-center my-5">
-                    <Button>Read All Posts</Button>
+                    <Link to='/blog'>
+                        <Button>Read All Posts</Button>
+                    </Link>
                 </Container>
                 <Footer />
             </div>

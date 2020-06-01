@@ -5,8 +5,10 @@ import Home from './Routes/Home/Home'
 import About from './Routes/About/About'
 import Blog from './Routes/Blog/Blog'
 import Contact from './Routes/Contact/Contact'
-import NoMatch from './Routes/NoMatch/NoMatch'
+import NoMatch from './Routes/NoMatch/NoMatch';
+import Admin from './Routes/Admin/Admin';
 import Fullpost from './Routes/Fullpost/Fullpost';
+import Dashboard from './Routes/Admin/Dashboard';
 
 
 class App extends Component {
@@ -20,6 +22,8 @@ class App extends Component {
             <Route path='/blog' component={Blog} />
             <Route path='/contact' component={Contact} />
             <Route path='/:posttype/:postid' component={Fullpost} />
+            <Route path='/admin' component={Admin} />
+            <Route path='/dashboard' component={Dashboard} />
             <Route component={NoMatch} />
           </Switch>
         </Router>

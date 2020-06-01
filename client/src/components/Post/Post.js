@@ -6,20 +6,20 @@ import './Blogcard.css';
 import { Button } from 'react-bootstrap';
 const Post = (props) => {
     return (
-        <div className={"blog-card " + props.alt}>
+        <div className={"blog-card "}>
             <div className="meta">
-                <div className="photo" style={{ backgroundImage: "url(https://storage.googleapis.com/chydlx/codepen/blog-cards/image-1.jpg)" }}></div>
+                <div className="photo" style={{ backgroundImage: `url(${props.image})` }}></div>
                 <ul className="details">
-                    <li className="author"><a href="/">John Doe</a></li>
+                    <li className="author"><a href="/">{props.author}</a></li>
                     <li className="date">Aug 24, 2020</li>
                 </ul>
             </div>
             <div className="description">
-                <h1>Title</h1>
-                <h2>Subtitle</h2>
-                <p> Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad eum dolorum architecto obcaecati enim dicta praesentium, quam nobis! Neque ad aliquam facilis numquam. Veritatis, sit.</p>
+                <h1>{props.title}</h1>
+                <h2>{props.subtitle}</h2>
+                <p style={{ overflow: 'hidden' }}>{props.content}</p>
                 <p className="read-more">
-                    <Link to={"/" + props.posttype + "/" + props.postid} ><Button>Read More</Button></Link>
+                    <Link to={"/" + props.type + "/" + props.id} ><Button>Read More</Button></Link>
                 </p>
             </div>
         </div >

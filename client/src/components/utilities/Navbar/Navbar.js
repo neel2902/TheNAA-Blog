@@ -12,12 +12,6 @@ const myNavbar = (props) => {
                 <Nav className="ml-auto" activeKey={location.pathname}>
                     <Nav.Link href="/">Home</Nav.Link>
                     <Nav.Link href="/about">About</Nav.Link>
-                    {/* <NavDropdown title="Articles" id="basic-nav-dropdown">
-                        <NavDropdown.Item href="#action/3.1"></NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.2">News</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Stories</NavDropdown.Item>
-                        <NavDropdown.Item href="#action/3.3">Poems</NavDropdown.Item>
-                    </NavDropdown> */}
                     <Nav.Link href="/blog">Blog</Nav.Link>
                 </Nav>
             </Navbar.Collapse>

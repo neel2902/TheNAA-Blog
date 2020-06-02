@@ -1,4 +1,4 @@
-import React, { Component, useState } from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, Modal, Container, Table, Form, Col } from 'react-bootstrap';
 import Navbar from '../../components/utilities/Navbar/Navbar';
@@ -7,7 +7,70 @@ import Navbar from '../../components/utilities/Navbar/Navbar';
 
 class Addpost extends Component {
     state = {
-        show: false
+        show: false,
+        title: '',
+        subtitle: '',
+        author: '',
+        content: '',
+        type: '',
+        image: ''
+    }
+
+    handleSubmitEvent = () => {
+        console.log(this.state);
+        const postData = {
+            title: this.state.title,
+            subtitle: this.state.subtitle,
+            author: this.state.author,
+            content: this.state.content,
+            type: this.state.type,
+            image: this.state.image
+        }
+        axios.post('/addBlog', postData)
+            .then(res => {
+                console.log(res);
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+
+
+
+    handleTypeChange = (event) => {
+        this.setState({
+            type: event.target.value
+        });
+    }
+
+    handleTitleChange = (event) => {
+        this.setState({
+            title: event.target.value
+        });
+    }
+
+    handleAuthorChange = (event) => {
+        this.setState({
+            author: event.target.value
+        });
+    }
+
+    handleSubtitleChange = (event) => {
+        this.setState({
+            subtitle: event.target.value
+        });
+    }
+
+    handleImageChange = (event) => {
+        this.setState({
+            image: event.target.value
+        });
+    }
+
+    handleContentChange = (event) => {
+        this.setState({
+            content: event.target.value
+        });
     }
 
     handleClose = () => {
@@ -17,6 +80,7 @@ class Addpost extends Component {
     handleShow = () => {
         this.setState({ show: true });
     }
+
     render() {
         return (
             <>
@@ -29,53 +93,50 @@ class Addpost extends Component {
                         <Modal.Title>Add a post</Modal.Title>
                     </Modal.Header>
                     <Modal.Body>
-                        <Form>
+                        <Form >
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridTitle">
                                     <Form.Label>Title</Form.Label>
-                                    <Form.Control type="text" placeholder="Title" required />
+                                    <Form.Control type="text" placeholder="Title" name="title" value={this.state.title} onChange={this.handleTitleChange} required />
                                 </Form.Group>
 
                                 <Form.Group as={Col} controlId="formGridAuthor">
-                                    <Form.Label>Password</Form.Label>
-                                    <Form.Control type="text" placeholder="Author" required />
+                                    <Form.Label>Author</Form.Label>
+                                    <Form.Control type="text" placeholder="Author" name="author" value={this.state.author} onChange={this.handleAuthorChange} required />
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
                                 <Form.Group as={Col} controlId="formGridSubtitle">
                                     <Form.Label>Subtitle</Form.Label>
-                                    <Form.Control type="text" placeholder="Subtitle" required />
+                                    <Form.Control type="text" placeholder="Subtitle" name="subtitle" value={this.state.subtitle} onChange={this.handleSubtitleChange} required />
                                 </Form.Group>
                             </Form.Row>
                             <Form.Row>
-                                <Form.Group as={Col} controlId="formGridTitle">
+                                <Form.Group as={Col} controlId="formGridCategory">
                                     <Form.Label>Category</Form.Label>
-                                    <Form.Control as="select" custom>
+                                    <Form.Control as="select" onChange={this.handleTypeChange} value={this.state.type} custom>
                                         <option value='poem'>Poem</option>
                                         <option selected value='article'>Article</option>
                                         <option value='story'>Story</option>
                                     </Form.Control>
                                 </Form.Group>
 
-                                <Form.Group as={Col} controlId="formGridAuthor">
+                                <Form.Group as={Col} controlId="formGridImage">
                                     <Form.File id="formcheck-api-regular">
-                                        <Form.File.Label required>Upload an image</Form.File.Label>
-                                        <Form.File.Input />
+                                        <Form.File.Label>Upload an image</Form.File.Label>
+                                        <Form.File.Input required name="image" onChange={this.handleImageChange} value={this.state.image} accept="image/*" />
                                     </Form.File>
                                 </Form.Group>
                             </Form.Row>
-                            <textarea id="w3review" name="w3review" rows="4" cols="100">
+                            <label for="w3review">Content</label>
+                            <textarea id="w3review" rows="4" cols="100" name="content" onChange={this.handleContentChange} value={this.state.content}>
                             </textarea>
+                            <br />
+                            <Button variant="success" style={{ margin: '2em auto', width: '30%' }} onClick={this.handleSubmitEvent}>
+                                Submit
+                            </Button>
                         </Form>
                     </Modal.Body>
-                    <Modal.Footer>
-                        <Button variant="secondary" onClick={this.handleClose}>
-                            Close
-                    </Button>
-                        <Button variant="primary" onClick={this.handleClose}>
-                            Submit
-                    </Button>
-                    </Modal.Footer>
                 </Modal>
             </>
         );
@@ -95,7 +156,7 @@ class TableRow extends Component {
                 <td>{this.props.type}</td>
                 <td>{this.props.author}</td>
                 <td>{this.props.date}</td>
-                <td onClick={this.deleteEventHandler}>❌</td>
+                <td onClick={this.deleteEventHandler}><span role="img" aria-label="string">❌</span></td>
             </tr>
         )
     }

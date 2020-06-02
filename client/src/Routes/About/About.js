@@ -5,18 +5,14 @@ import Footer from '../../components/utilities/Footer/Footer';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import './Editor.css';
 
-const Editor = () => {
+const Editor = (props) => {
     return (
         <figure class="snip1515">
             <div class="profile-image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample47.jpg" alt="sample47" /></div>
             <figcaption>
-                <h3>Fleece Marigold</h3>
-                <h4>Founder</h4>
-                <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
-                {/* <div class="icons"><a href="/"><i class="ion-social-reddit"></i></a>
-                    <a href="/"> <i class="ion-social-twitter"></i></a>
-                    <a href="/"> <i class="ion-social-vimeo"></i></a>
-                </div> */}
+                <h3>{props.name}</h3>
+                <h4>{props.role}</h4>
+                <p>{props.quote}</p>
             </figcaption>
         </figure>
     );
@@ -49,17 +45,15 @@ const About = () => {
                     <hr className="dos" />
                 </h3>
                 <div className="d-flex mx-auto flex-wrap mt-3 justify-content-center">
-                    <Editor />
-                    <Editor />
-                    <Editor />
-                    <Editor />
-                    <Editor />
-                    <Editor />
-                    <Editor />
-                    <Editor />
+                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
+                    <Editor name="Rajababu Saikia" role="Admin" quote="Loremc hgcsava ytacfsyascf" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
                 </div>
             </Container>
-            <Container className={styles.git}>
+            <div className={styles.git}>
                 <h3 className="text-center thedteam">
                     <hr className="dos" />
                     Get in touch
@@ -70,7 +64,7 @@ const About = () => {
                     <p>Call us at +91 00000 00000</p>
                     <p>Submit articles at <a href="mailto:thenaanlp@gmail.com">THE NAA</a></p>
                 </div>
-            </Container>
+            </div>
             <Footer />
         </section >
     )

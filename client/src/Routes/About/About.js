@@ -10,7 +10,7 @@ const Editor = () => {
         <figure class="snip1515">
             <div class="profile-image"><img src="https://s3-us-west-2.amazonaws.com/s.cdpn.io/331810/sample47.jpg" alt="sample47" /></div>
             <figcaption>
-                <h3>Fleece Marigold</h3>
+                <h3>Fleece </h3>
                 <h4>সহযোগী সম্পাদক</h4>
                 <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
                 {/* <div class="icons"><a href="/"><i class="ion-social-reddit"></i></a>

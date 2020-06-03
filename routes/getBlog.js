@@ -1,7 +1,10 @@
 const express = require('express');
 
+const path = require('path');
+
 let router = express.Router();
-let BlogsDao = require('../src/blogsDao.js');
+
+let BlogsDao = require(path.join(__dirname,'..','src','blogsDao.js'));
 
 router.get('/blog/:postType/:postId',async (req,res)=>{
 

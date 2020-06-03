@@ -1,11 +1,12 @@
 const express = require('express');
 const multer = require('multer');
+const path = require('path');
+const auth = require(path.join(__dirname,'..','src','auth.js'));
 
 let upload = multer({
-
 		storage:multer.diskStorage({ 
 			destination: function (req, file, cb) {
-    			cb(null, './public/imgs');
+    			cb(null, path.join(__dirname,'..','public','blogImgs'));
   			},
     		filename: function (req, file, cb) {
         	let originalnameList=file.originalname.split('.');
@@ -17,18 +18,18 @@ let upload = multer({
 
 let router = express.Router();
 
-let BlogsDao = require('../src/blogsDao.js');
+let BlogsDao = require(path.join(__dirname,'..','src','blogsDao.js'));
 
-router.post('/addBlog',upload.single('image'),async (req,res)=>{
+router.post('/addBlog',auth.author,upload.single('image'),async (req,res)=>{
 	try{
 		await BlogsDao.addBlog({
-			location: 'imgs/'+req.file.filename,
+			location: '/blogImgs/'+req.file.filename,
 			date_uploaded: Date.now(),
 			type: req.body.type,
 			title: req.body.title,
 			subtitle: req.body.subtitle,
 			content: req.body.content,
-			author: req.body.author,
+			author: req.session.author.name,
 			views: 0
 		});	
 	}

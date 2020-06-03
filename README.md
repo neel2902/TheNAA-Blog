@@ -37,7 +37,7 @@ Backend server which runs at url:PORT.
 ## Enviroment Variables
 Add .env file to the project folder with the following contents
 
-NODE_ENV can be `developement or production`
+NODE_ENV can be `development or production`
 PORT = on which to run the backend server, for developement purpose use 5000
 NAA_DB_URI = mongodb connection string
 NAA_NS = mongodb database name
@@ -50,14 +50,28 @@ get `/blogs/:postType` : postType is optional
 
 get `/topBlogs/:postType` : postType is optional
 
-post `/addBlog`: with fields
+post `/addBlog`: with fields (multipart/form) 
+
+requires author or admin to be logged in
 
 1. image
 2. title
 3. subtitle
 4. content
-5. author
-6. type
+5. type
+
+post `/addAuthor`: with fields (multipart/form)
+
+requires admin to be logged in
+
+1. name
+2. image(optional)
+3. secret
+
+post `/login` : with fields (multipart/form)
+
+1. name
+2. secret
 
 
 Note: for developement of react app send request to app itself, it will redirect it itself to the correct port

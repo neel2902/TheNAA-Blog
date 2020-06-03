@@ -8,7 +8,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-sm-12 col-md-6">
                         <h6>About</h6>
-                        <p className="text-justify">Maecenas porttitor nunc eu dolor sagittis maximus. Vivamus aliquam convallis sem nec fermentum. Fusce mollis consequat augue quis ullamcorper. Aliquam pellentesque, tortor egestas mattis iaculis, arcu purus congue massa, et efficitur dolor nibh a sapien. In fermentum nisl vitae pretium fringilla. Phasellus in tristique arcu. Donec ultricies egestas consectetur. Phasellus orci diam, sollicitudin at lobortis eget, gravida quis odio.</p>
+                        <p className="text-justify">ন - নতুন চিন্তাৰ খোৰাক দিয়াৰ এক প্ৰয়াস | লক্ষীমপুৰ জিলাৰ ছাত্ৰ ছাত্ৰী সকলৰ মাজত খুবেই জনপ্ৰিয় মাহেকীয়া আলোচনী 'ন' এতিয়া নতুন ৰূপত | ঘৰতে বহি উপভোগ কৰিব পৰাকৈ এতিয়া অনলাইন উপলব্ধ আপোনাৰ প্ৰিয় আলোচনী 'ন' | </p>
                     </div>
 
                     <div className="col-xs-6 col-md-3">

@@ -5,6 +5,7 @@ const path = require('path');
 const express = require('express');
 const logger = require('morgan');
 const helmet = require('helmet');
+const cors = require('cors');
 const bodyParser = require('body-parser');
 const MongoClient = require('mongodb').MongoClient;
 const session = require('express-session');
@@ -33,26 +34,29 @@ MongoClient.connect(
   })
   .then(async client => {
     
-    await BlogsDao.injectDB(client);
+ 	   await BlogsDao.injectDB(client);
 
-    await AuthorDao.injectDB(client);
+ 	   await AuthorDao.injectDB(client);
     
-    app.use(helmet());
-  	
-  	process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
-  	
-	app.set('trust proxy', 1) // trust first proxy to enable react app
+ 	   app.use(helmet());
 
-	app.use(session({
-  	   secret: process.env.SESSION_SECRET,
-  	   resave: false,
-  	   saveUninitialized: true,
-	}))
-  	app.use(bodyParser.json());
+	   app.use(cors());
   	
-  	app.use(bodyParser.urlencoded({ extended: false }));
+ 	   process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
+  	
+ 	   app.set('trust proxy', 1) // trust first proxy to enable react app
+
+ 	   app.use(session({
+ 	      secret: process.env.SESSION_SECRET,
+ 	      resave: false,
+ 	      saveUninitialized: true,
+ 	   }))
+    
+ 	   app.use(bodyParser.json());
+  	
+ 	   app.use(bodyParser.urlencoded({ extended: false }));
   
-  	app.use(require(path.join(__dirname,'routes','addBlog.js')));
+    	app.use(require(path.join(__dirname,'routes','addBlog.js')));
 
   	app.use(require(path.join(__dirname,'routes','getBlog.js')));
 

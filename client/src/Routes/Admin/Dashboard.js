@@ -2,7 +2,9 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Button, Modal, Container, Table, Form, Col } from 'react-bootstrap';
 import Navbar from '../../components/utilities/Navbar/Navbar';
-
+import CKEditor from '@ckeditor/ckeditor5-react';
+import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
+import Cookies from 'js-cookie';
 
 
 class Addpost extends Component {
@@ -13,28 +15,49 @@ class Addpost extends Component {
         author: '',
         content: '',
         type: '',
-        image: ''
+        image: null,
+        cookieId: Cookies.get('username')
+    }
+
+    componentDidMount() {
+        ClassicEditor
+            .create(document.querySelector('#editor'))
+            .catch(error => {
+                console.error(error);
+            });
     }
 
     handleSubmitEvent = () => {
         console.log(this.state);
-        const postData = {
-            title: this.state.title,
-            subtitle: this.state.subtitle,
-            author: this.state.author,
-            content: this.state.content,
-            type: this.state.type,
-            image: this.state.image
-        }
-        axios.post('/addBlog', postData)
-            .then(res => {
-                console.log(res);
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
 
+        var myHeaders = new Headers();
+        // myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE1OTAwOTkxNDAsImlhdCI6MTU5MDA4MTE0MH0.BMM_c1LaTwQNsQ3Usg84-OrGQokP2Zm5cCiplBXRroaKqWGWQcfAHhoSC67nBee7yquTDOIuONm1m7McFYcQRg");
+        // myHeaders.append("Cookie", "connect.sid=s%3ACdRTVkX_8YCQfX7e_QBhrGFga9qFWvoV.m%2BPs8Q2hsr4StmX0wnf7HsmP8DHHjwXU2VByozznvko");
+
+        var formdata = new FormData();
+        formdata.append("type", this.state.type);
+        formdata.append("title", this.state.title);
+        formdata.append("subtitle", this.state.subtitle);
+        formdata.append("content", this.state.content);
+        formdata.append("image", this.state.image, this.state.image.name);
+
+        var requestOptions = {
+            method: 'POST',
+            headers: myHeaders,
+            body: formdata,
+            redirect: 'follow'
+        };
+
+        fetch("http://localhost:5000/addBlog", requestOptions)
+            .then(response => response.text())
+            .then(result => {
+                if (result == 'blog added successfully') {
+                    window.location.reload();
+                }
+                console.log(result);
+            })
+            .catch(error => console.log('error', error));
+    }
 
 
     handleTypeChange = (event) => {
@@ -63,13 +86,13 @@ class Addpost extends Component {
 
     handleImageChange = (event) => {
         this.setState({
-            image: event.target.value
+            image: event.target.files[0]
         });
     }
 
-    handleContentChange = (event) => {
+    handleContentChange = (data) => {
         this.setState({
-            content: event.target.value
+            content: data
         });
     }
 
@@ -124,13 +147,29 @@ class Addpost extends Component {
                                 <Form.Group as={Col} controlId="formGridImage">
                                     <Form.File id="formcheck-api-regular">
                                         <Form.File.Label>Upload an image</Form.File.Label>
-                                        <Form.File.Input required name="image" onChange={this.handleImageChange} value={this.state.image} accept="image/*" />
+                                        <Form.File.Input required name="image" onChange={this.handleImageChange} accept="image/*" />
                                     </Form.File>
                                 </Form.Group>
                             </Form.Row>
                             <label for="w3review">Content</label>
-                            <textarea id="w3review" rows="4" cols="100" name="content" onChange={this.handleContentChange} value={this.state.content}>
-                            </textarea>
+                            <CKEditor
+                                editor={ClassicEditor}
+                                data="<p>Copy paste it here</p>"
+                                onInit={editor => {
+                                    // You can store the "editor" and use when it is needed.
+                                    console.log('Editor is ready to use!', editor);
+                                }}
+                                onChange={(event, editor) => {
+                                    const data = editor.getData();
+                                    this.handleContentChange(data);
+                                }}
+                                onBlur={(event, editor) => {
+                                    console.log('Blur.', editor);
+                                }}
+                                onFocus={(event, editor) => {
+                                    console.log('Focus.', editor);
+                                }}
+                            />
                             <br />
                             <Button variant="success" style={{ margin: '2em auto', width: '30%' }} onClick={this.handleSubmitEvent}>
                                 Submit
@@ -145,7 +184,7 @@ class Addpost extends Component {
 class TableRow extends Component {
 
     deleteEventHandler = () => {
-        alert("Hey whazzap");
+        alert("Delete post feature is currently in the making");
     }
 
     render() {

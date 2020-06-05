@@ -9,27 +9,26 @@ import NoMatch from './Routes/NoMatch/NoMatch';
 import Admin from './Routes/Admin/Admin';
 import Fullpost from './Routes/Fullpost/Fullpost';
 import Dashboard from './Routes/Admin/Dashboard';
+// import ProtectedRoute from './Routes/ProtectedRoute';
 
 
-class App extends Component {
-  render() {
-    return (
-      <React.Fragment>
-        <Router>
-          <Switch>
-            <Route exact path='/' component={Home} />
-            <Route path='/about' component={About} />
-            <Route path='/blog' component={Blog} />
-            <Route path='/contact' component={Contact} />
-            <Route path='/:posttype/:postid' component={Fullpost} />
-            <Route path='/admin' component={Admin} />
-            <Route path='/dashboard' component={Dashboard} />
-            <Route component={NoMatch} />
-          </Switch>
-        </Router>
-      </React.Fragment>
-    );
-  }
+const App = () => {
+  return (
+    <React.Fragment >
+      <Router>
+        <Switch>
+          <Route exact path='/' component={Home} />
+          <Route exact path='/about' component={About} />
+          <Route path='/blog' component={Blog} />
+          <Route path='/contact' component={Contact} />
+          <Route path='/:posttype/:postid' component={Fullpost} />
+          <Route path='/admin' component={Admin} />
+          <Route path='/dashboard' component={Dashboard} />
+          <Route path="*" component={NoMatch} />
+        </Switch>
+      </Router>
+    </React.Fragment >
+  );
 }
 
 export default App;

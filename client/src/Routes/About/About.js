@@ -12,10 +12,9 @@ const Editor = (props) => {
             <figcaption>
                 <h3>Fleece </h3>
                 <h4>সহযোগী সম্পাদক</h4>
-                <p>Which is worse, that everyone has his price, or that the price is always so low.</p>
+                <p>{props.quote}</p>
                 <h3>{props.name}</h3>
                 <h4>{props.role}</h4>
-                <p>{props.quote}</p>
             </figcaption>
         </figure>
     );
@@ -49,12 +48,12 @@ const About = () => {
                     <hr className="dos" />
                 </h3>
                 <div className="d-flex mx-auto flex-wrap mt-3 justify-content-center">
-                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
-                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
-                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
-                    <Editor name="Rajababu Saikia" role="Admin" quote="Loremc hgcsava ytacfsyascf" />
-                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
-                    <Editor name="Nilkamal Thakuria" role="Editor" quote="Lorem ipsum dolor sit amet" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" />
+                    <Editor name="Rajababu Saikia" role="Admin" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" />
+                    <Editor name="Nilkamal Thakuria" role="Editor" />
                 </div>
             </Container>
             <div className={styles.git}>

@@ -69,21 +69,24 @@ class Home extends Component {
 
     render() {
         const posts = this.state.posts.map(post => {
-            return <Post key={post._id} id={post._id} title={post.title} author={post.author} content={post.content} image={post.location} type={post.type} />;
+            return <Post key={post._id} id={post._id} title={post.title} subtitle={post.subtitle} author={post.author} content={post.content} image={post.location} type={post.type} />;
         });
         return (
             <div style={{ backgroundColor: 'white' }}>
                 <Navbar />
                 <Slideshow />
                 <Features />
-                <div className={styles.homeposts} >
-                    {posts}
+                <div style={{ background: '#dddddd', }}>
+                    <h1 className="py-5" style={{ textAlign: 'center' }}>Read our top posts</h1>
+                    <div style={{ margin: '0 auto', width: '100%', padding: '0% 5% 5%', display: 'flex', flexWrap: 'wrap', justifyContent: 'center' }}>
+                        {posts}
+                    </div>
+                    <div className="text-center py-3">
+                        <Link to='/blog'>
+                            <Button variant="success">Read All Posts</Button>
+                        </Link>
+                    </div>
                 </div>
-                <Container className="text-center my-5">
-                    <Link to='/blog'>
-                        <Button>Read All Posts</Button>
-                    </Link>
-                </Container>
                 <Footer />
             </div>
         );

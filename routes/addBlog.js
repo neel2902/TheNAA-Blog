@@ -29,7 +29,7 @@ router.post('/addBlog',auth.author,upload.single('image'),async (req,res)=>{
 			title: req.body.title,
 			subtitle: req.body.subtitle,
 			content: req.body.content,
-			author: req.session.author.name,
+			author: req.body.name,
 			views: 0
 		});	
 	}

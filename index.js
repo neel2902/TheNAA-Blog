@@ -34,27 +34,27 @@ MongoClient.connect(
   })
   .then(async client => {
     
- 	   await BlogsDao.injectDB(client);
+	await BlogsDao.injectDB(client);
 
- 	   await AuthorDao.injectDB(client);
+	await AuthorDao.injectDB(client);
     
- 	   app.use(helmet());
+	app.use(helmet());
 
-	   app.use(cors());
+	app.use(cors());
   	
- 	   process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
+	process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
   	
- 	   app.set('trust proxy', 1) // trust first proxy to enable react app
+	app.set('trust proxy', 1) // trust first proxy to enable react app
 
- 	   app.use(session({
+	app.use(session({
  	      secret: process.env.SESSION_SECRET,
  	      resave: false,
  	      saveUninitialized: true,
- 	   }))
+	}))
     
- 	   app.use(bodyParser.json());
+	app.use(bodyParser.json());
   	
- 	   app.use(bodyParser.urlencoded({ extended: false }));
+ 	app.use(bodyParser.urlencoded({ extended: false }));
   
     	app.use(require(path.join(__dirname,'routes','addBlog.js')));
 
@@ -82,10 +82,8 @@ MongoClient.connect(
   		});
 	}
 
-    app.listen(port, () => {
-    
-      console.log(`listening on port ${port}`)
-    
-    })
+	app.listen(port, () => {
+    		console.log(`listening on port ${port}`)
+    	})
   
   })

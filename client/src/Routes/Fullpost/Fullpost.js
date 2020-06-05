@@ -60,7 +60,8 @@ class Fullpost extends Component {
 
     render() {
         const posts = this.state.otherposts.map(post => {
-            return <Post key={post._id} id={post._id} title={post.title} author={post.author} subtitle={post.subtitle} content={post.content} image={post.location} type={post.type} />;
+            const date = new Date(post.date_uploaded).toDateString();
+            return <Post key={post._id} id={post._id} title={post.title} author={post.author} subtitle={post.subtitle} content={post.content} image={post.location} date={date} type={post.type} />;
         });
 
         return (

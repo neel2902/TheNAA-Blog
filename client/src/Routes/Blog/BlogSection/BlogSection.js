@@ -10,7 +10,19 @@ class BlogSection extends Component {
     }
 
     componentDidMount() {
-        axios.get('/blogs/' + this.props.type)
+        let blogType = '';
+
+        if (this.props.type === 'studentCorner') {
+            blogType = 'story';
+        }
+        else if (this.props.type === 'currentWorld') {
+            blogType = 'poem';
+        }
+        else {
+            blogType = 'article';
+        }
+
+        axios.get('/blogs/' + blogType)
             .then(res => {
                 console.log(res.data);
                 this.setState({

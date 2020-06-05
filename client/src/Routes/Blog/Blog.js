@@ -26,7 +26,7 @@ const Blog = () => {
                         <h2>This is nice</h2>
                     </div>
                     <div style={blockdiv}>
-                        <BlogSection type="story" />
+                        <BlogSection type="studentCorner" />
                     </div>
                 </Tab>
                 <Tab eventKey="articles" title="Articles" style={stylesTab}>
@@ -42,7 +42,7 @@ const Blog = () => {
                         <h2>This is very nice</h2>
                     </div>
                     <div style={blockdiv}>
-                        <BlogSection type="poem" />
+                        <BlogSection type="currentWorld" />
                     </div>
                 </Tab>
             </Tabs>

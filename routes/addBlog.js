@@ -20,7 +20,7 @@ let router = express.Router();
 
 let BlogsDao = require(path.join(__dirname,'..','src','blogsDao.js'));
 
-router.post('/addBlog',auth.author,upload.single('image'),async (req,res)=>{
+router.post('/addBlog',upload.single('image'),async (req,res)=>{
 	try{
 		await BlogsDao.addBlog({
 			location: '/blogImgs/'+req.file.filename,

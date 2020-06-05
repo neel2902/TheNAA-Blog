@@ -6,3 +6,15 @@
     text-align: center;
     justify-content: space-between;
 }
+
+.homeimg {
+    width: 400px;
+    height: 300px;
+}
+
+@media (max-width: 760px) {
+    .homeimg {
+        width: 300px;
+        height: 200px;
+    }
+}

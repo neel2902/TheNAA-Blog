@@ -1,8 +1,11 @@
 import React from 'react';
 import 'swiper/css/swiper.css';
 import Swiper from 'react-id-swiper';
+import './Slideshow.css';
+import slide1 from '../../assets/images/slide1.jpg';
 
-import styles from './Slideshow.module.css';
+
+
 
 const SlideshowConfigs = {
     containerClass: 'swiper-container myslide',
@@ -34,42 +37,20 @@ const SlideshowConfigs = {
 
 const Slideshow = () => {
     return (
-        <div className={styles.swipercontainer}>
+        <div className="swipercontainer">
             <Swiper {...SlideshowConfigs}>
                 {/* <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/1' }} className={styles.slide} />
             <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/2' }} className={styles.slide} />
             <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/3' }} className={styles.slide} />
             <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/4' }} className={styles.slide} />
         <div style={{ backgroundImage: 'url(http://lorempixel.com/600/600/nature/5' }} className={styles.slide} /> */}
-                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
-                    <div className={styles.desc}>
-                        <h1>This is a slide</h1>
-                        <p>This is its description</p>
-                    </div>
+                <div className="myslide" style={{ backgroundImage: `url(${require("../../assets/images/slide1.jpg")})` }}>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
-                    <div className={styles.desc}>
-                        <h1>This is a slide</h1>
-                        <p>This is its description</p>
-                    </div>
+                <div className="myslide" style={{ backgroundImage: `url(${require("../../assets/images/slide2.jpg")})` }}>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
-                    <div className={styles.desc}>
-                        <h1>This is a slide</h1>
-                        <p>This is its description</p>
-                    </div>
+                <div className="myslide" style={{ backgroundImage: `url(${require("../../assets/images/slide3.jpg")})` }}>
                 </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(https://images.pexels.com/photos/36717/amazing-animal-beautiful-beautifull.jpg?auto=compress&cs=tinysrgb&dpr=2&h=650&w=940)' }}>
-                    <div className={styles.desc}>
-                        <h1>This is a slide</h1>
-                        <p>This is its description</p>
-                    </div>
-                </div>
-                <div className={styles.myslide} style={{ backgroundImage: 'url(https://image.freepik.com/free-vector/futuristic-medical-infographic-with-details_23-2148521124.jpg)' }}>
-                    <div className={styles.desc}>
-                        <h1>This is a slide</h1>
-                        <p>This is its description</p>
-                    </div>
+                <div className="myslide" style={{ backgroundImage: `url(${require("../../assets/images/slide4.jpg")})` }}>
                 </div>
             </Swiper >
         </div>

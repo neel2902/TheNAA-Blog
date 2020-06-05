@@ -15,8 +15,7 @@ class Addpost extends Component {
         author: '',
         content: '',
         type: '',
-        image: null,
-        cookieId: Cookies.get('username')
+        image: null
     }
 
     componentDidMount() {
@@ -36,10 +35,13 @@ class Addpost extends Component {
 
         var formdata = new FormData();
         formdata.append("type", this.state.type);
+        formdata.append("author", this.state.author);
         formdata.append("title", this.state.title);
         formdata.append("subtitle", this.state.subtitle);
         formdata.append("content", this.state.content);
         formdata.append("image", this.state.image, this.state.image.name);
+
+        console.log(formdata);
 
         var requestOptions = {
             method: 'POST',
@@ -51,7 +53,7 @@ class Addpost extends Component {
         fetch("http://localhost:5000/addBlog", requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result == 'blog added successfully') {
+                if (result === 'blog added successfully') {
                     window.location.reload();
                 }
                 console.log(result);
@@ -188,6 +190,7 @@ class TableRow extends Component {
     }
 
     render() {
+
         return (
             <tr>
                 <td>{this.props.id}</td>
@@ -222,7 +225,7 @@ class Dashboard extends Component {
 
     render() {
         const rows = this.state.posts.map(post => {
-            const date = new Date(post.date_uploaded * 1000).toDateString();
+            const date = new Date(post.date_uploaded).toDateString();
             return <TableRow id={post._id} title={post.title} type={post.type} author={post.author} date={date} />
         })
 

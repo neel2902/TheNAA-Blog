@@ -6,7 +6,7 @@ const myNavbar = (props) => {
     const { location } = props;
     return (
         <Navbar bg="light" variant="light" expand="lg">
-            <Navbar.Brand href="/">The NAA</Navbar.Brand>
+            <Navbar.Brand href="/"><img src={`${require("../../../assets/images/thenaalogo.png")}`} height='40' width='40' /></Navbar.Brand>
             <Navbar.Toggle aria-controls="basic-navbar-nav" />
             <Navbar.Collapse id="basic-navbar-nav">
                 <Nav className="ml-auto" activeKey={location.pathname}>

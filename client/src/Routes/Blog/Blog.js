@@ -2,7 +2,8 @@ import React from 'react';
 // import styles from './Blog.module.css';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import { Tabs, Tab } from 'react-bootstrap';
-import BlogSection from './BlogSection/BlogSection'
+import BlogSection from './BlogSection/BlogSection';
+import Footer from '../../components/utilities/Footer/Footer';
 
 const Blog = () => {
 
@@ -45,6 +46,7 @@ const Blog = () => {
                     </div>
                 </Tab>
             </Tabs>
+            <Footer />
         </div>
     )
 }

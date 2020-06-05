@@ -27,8 +27,8 @@ class Fullpost extends Component {
 
         axios.get('/blog/' + postUrl)
             .then(res => {
-                const unixTimeStamp = res.data.date_uploaded;
-                const date = new Date(unixTimeStamp * 1000).toDateString();
+                const unixTimeStamp = new Date(res.data.date_uploaded);
+                const date = unixTimeStamp.toDateString();
 
                 this.setState({
                     postId: res.data._id,

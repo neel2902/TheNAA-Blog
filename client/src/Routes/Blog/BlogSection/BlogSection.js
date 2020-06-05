@@ -24,7 +24,8 @@ class BlogSection extends Component {
     render() {
         const posts = this.state.posts.map(post => {
             // post.date
-            return <Post key={post._id} id={post._id} title={post.title} author={post.author} subtitle={post.subtitle} content={post.content} image={post.location} type={post.type} />;
+            const date = new Date(post.date_uploaded).toDateString();
+            return <Post key={post._id} id={post._id} title={post.title} author={post.author} subtitle={post.subtitle} content={post.content} date={date} image={post.location} type={post.type} />;
         })
         return (
             <div className={styles.zigzag}>

@@ -21,26 +21,26 @@ const Blog = () => {
         <div>
             <Navbar />
             <Tabs defaultActiveKey="stories" id="uncontrolled-tab-example">
-                <Tab eventKey="stories" title="Stories" style={stylesTab}>
-                    <div className="text-center">
+                <Tab eventKey="studentCorner" title="Student Corner" style={stylesTab}>
+                    {/* <div className="text-center">
                         <h2>This is nice</h2>
-                    </div>
+                    </div> */}
                     <div style={blockdiv}>
                         <BlogSection type="studentCorner" />
                     </div>
                 </Tab>
                 <Tab eventKey="articles" title="Articles" style={stylesTab}>
-                    <div className="text-center">
+                    {/* <div className="text-center">
                         <h2>This is not nice</h2>
-                    </div>
+                    </div> */}
                     <div style={blockdiv}>
                         <BlogSection type="article" />
                     </div>
                 </Tab>
-                <Tab eventKey="poems" title="Poems" style={stylesTab}>
-                    <div className="text-center">
+                <Tab eventKey="currentWorld" title="Current World" style={stylesTab}>
+                    {/* <div className="text-center">
                         <h2>This is very nice</h2>
-                    </div>
+                    </div> */}
                     <div style={blockdiv}>
                         <BlogSection type="currentWorld" />
                     </div>

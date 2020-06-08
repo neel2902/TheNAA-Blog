@@ -12,17 +12,6 @@ const Footer = () => {
                     </div>
 
                     <div className="col-xs-6 col-md-3">
-                        <h6>Categories</h6>
-                        <ul className="footer-links">
-                            <li><a href="http://scanfcode.com/about/">About Us</a></li>
-                            <li><a href="http://scanfcode.com/contact/">Contact Us</a></li>
-                            <li><a href="http://scanfcode.com/contribute-at-scanfcode/">Contribute</a></li>
-                            <li><a href="http://scanfcode.com/privacy-policy/">Privacy Policy</a></li>
-                            <li><a href="http://scanfcode.com/sitemap/">Sitemap</a></li>
-                        </ul>
-                    </div>
-
-                    <div className="col-xs-6 col-md-3">
                         <h6>Quick Links</h6>
                         <ul className="footer-links">
                             <li><a href="/">Home</a></li>
@@ -37,7 +26,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-md-8 col-sm-6 col-xs-12">
                         <p className="copyright-text">Copyright &copy; 2020 All Rights Reserved by
-             <a href="/"> Nilkamal Thakuria</a>.
+             <a href="/"> The NAA</a>.
                 </p>
                     </div>
 

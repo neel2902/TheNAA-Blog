@@ -20,7 +20,7 @@ const Blog = () => {
     return (
         <div>
             <Navbar />
-            <Tabs defaultActiveKey="stories" id="uncontrolled-tab-example">
+            <Tabs defaultActiveKey="studentCorner" id="uncontrolled-tab-example">
                 <Tab eventKey="studentCorner" title="Student Corner" style={stylesTab}>
                     {/* <div className="text-center">
                         <h2>This is nice</h2>

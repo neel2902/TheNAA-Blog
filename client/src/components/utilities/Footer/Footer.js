@@ -19,6 +19,12 @@ const Footer = () => {
                             <li><a href="/blog">Blog</a></li>
                         </ul>
                     </div>
+                    <div className="col-xs-6 col-md-3">
+                        <h6>Contact Us</h6>
+                        <ul className="footer-links">
+                            <li>Mail us at <a href="mailto:thenaanlp@gmail.com">THE NAA</a></li>
+                        </ul>
+                    </div>
                 </div>
                 <hr />
             </div>

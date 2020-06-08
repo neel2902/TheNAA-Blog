@@ -8,8 +8,6 @@ import Contact from './Routes/Contact/Contact'
 import NoMatch from './Routes/NoMatch/NoMatch';
 import Admin from './Routes/Admin/Admin';
 import Fullpost from './Routes/Fullpost/Fullpost';
-// import Dashboard from './Routes/Admin/Dashboard';
-// import ProtectedRoute from './Routes/ProtectedRoute';
 
 
 const App = () => {

@@ -10,8 +10,6 @@ const Editor = (props) => {
         <figure class="snip1515">
             <div class="profile-image"><img src={props.image} alt="editor" className="teamimg" /></div>
             <figcaption>
-                <h4>সহযোগী সম্পাদক</h4>
-                <p>{props.quote}</p>
                 <h3>{props.name}</h3>
                 <h4>{props.role}</h4>
             </figcaption>
@@ -47,11 +45,11 @@ const About = () => {
                     <hr className="dos" />
                 </h3>
                 <div className="d-flex mx-auto flex-wrap mt-3 justify-content-center">
-                    <Editor name="দিব্যৰঞ্জণ বৰা" role="Editor" image={require('../../assets/images/dibya.jpeg')} />
-                    <Editor name="হৰিপ্ৰসন্ন শইকীয়া" role="Editor" image={require('../../assets/images/hari.jpeg')} />
-                    <Editor name="মৃদুল ফুকন" role="Editor" image={require('../../assets/images/mridul.jpeg')} />
-                    <Editor name="জগত গগৈ" role="Editor" image={require('../../assets/images/jagat.jpeg')} />
-                    <Editor name="সমীন কুমাৰ শইকীয়া" role="Editor" image={require('../../assets/images/xamin.jpeg')} />
+                    <Editor name="জগত গগৈ" role="সম্পাদক" image={require('../../assets/images/jagat.jpeg')} />
+                    <Editor name="দিব্যৰঞ্জণ বৰা" role="সহযোগী সম্পাদক" image={require('../../assets/images/dibya.jpeg')} />
+                    <Editor name="হৰিপ্ৰসন্ন শইকীয়া" role="ক্ৰীড়া সম্পাদক" image={require('../../assets/images/hari.jpeg')} />
+                    <Editor name="মৃদুল ফুকন" role="সহযোগী সম্পাদক" image={require('../../assets/images/mridul.jpeg')} />
+                    <Editor name="সমীন কুমাৰ শইকীয়া" role="সহযোগী সম্পাদক" image={require('../../assets/images/xamin.jpeg')} />
                 </div>
             </Container>
             <div className={styles.git}>

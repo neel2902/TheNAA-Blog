@@ -62,7 +62,6 @@ const About = () => {
                 </h3>
                 <div>
                     <p>Drop an email at <a href="mailto:thenaanlp@gmail.com">THE NAA</a></p>
-                    <p>Call us at +91 00000 00000</p>
                     <p>Submit articles at <a href="mailto:thenaanlp@gmail.com">THE NAA</a></p>
                 </div>
             </div>

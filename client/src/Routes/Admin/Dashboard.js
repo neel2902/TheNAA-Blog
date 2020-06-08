@@ -4,7 +4,6 @@ import { Button, Modal, Container, Table, Form, Col } from 'react-bootstrap';
 import Navbar from '../../components/utilities/Navbar/Navbar';
 import CKEditor from '@ckeditor/ckeditor5-react';
 import ClassicEditor from '@ckeditor/ckeditor5-build-classic';
-import Cookies from 'js-cookie';
 
 
 class Addpost extends Component {
@@ -14,7 +13,7 @@ class Addpost extends Component {
         subtitle: '',
         author: '',
         content: '',
-        type: '',
+        type: 'poem',
         image: null
     }
 
@@ -35,7 +34,7 @@ class Addpost extends Component {
 
         var formdata = new FormData();
         formdata.append("type", this.state.type);
-        formdata.append("author", this.state.author);
+        formdata.append("name", this.state.author);
         formdata.append("title", this.state.title);
         formdata.append("subtitle", this.state.subtitle);
         formdata.append("content", this.state.content);
@@ -53,10 +52,17 @@ class Addpost extends Component {
         fetch("http://localhost:5000/addBlog", requestOptions)
             .then(response => response.text())
             .then(result => {
-                if (result === 'blog added successfully') {
-                    window.location.reload();
-                }
+                this.setState({
+                    show: false,
+                    title: '',
+                    subtitle: '',
+                    author: '',
+                    content: '',
+                    type: 'poem',
+                    image: null
+                })
                 console.log(result);
+                this.props.rerenderParentCallback();
             })
             .catch(error => console.log('error', error));
     }
@@ -140,8 +146,8 @@ class Addpost extends Component {
                                 <Form.Group as={Col} controlId="formGridCategory">
                                     <Form.Label>Category</Form.Label>
                                     <Form.Control as="select" onChange={this.handleTypeChange} value={this.state.type} custom>
-                                        <option value='poem'>Poem</option>
-                                        <option selected value='article'>Article</option>
+                                        <option selected value='poem'>Poem</option>
+                                        <option value='article'>Article</option>
                                         <option value='story'>Story</option>
                                     </Form.Control>
                                 </Form.Group>
@@ -185,12 +191,7 @@ class Addpost extends Component {
 }
 class TableRow extends Component {
 
-    deleteEventHandler = () => {
-        alert("Delete post feature is currently in the making");
-    }
-
     render() {
-
         return (
             <tr>
                 <td>{this.props.id}</td>
@@ -198,7 +199,6 @@ class TableRow extends Component {
                 <td>{this.props.type}</td>
                 <td>{this.props.author}</td>
                 <td>{this.props.date}</td>
-                <td onClick={this.deleteEventHandler}><span role="img" aria-label="string">❌</span></td>
             </tr>
         )
     }
@@ -222,7 +222,20 @@ class Dashboard extends Component {
                 console.error(err);
             })
     }
-
+    componentDidUpdate() {
+        axios.get('/blogs')
+            .then(res => {
+                this.setState({
+                    posts: res.data
+                })
+            })
+            .catch(err => {
+                console.error(err);
+            })
+    }
+    rerenderParentCallback = () => {
+        this.forceUpdate();
+    }
     render() {
         const rows = this.state.posts.map(post => {
             const date = new Date(post.date_uploaded).toDateString();
@@ -233,7 +246,7 @@ class Dashboard extends Component {
             <React.Fragment>
                 <Navbar />
                 <Container className="my-5">
-                    <Addpost />
+                    <Addpost rerenderParentCallback={this.rerenderParentCallback} />
                     <Table striped bordered hover>
                         <thead>
                             <tr>
@@ -242,7 +255,6 @@ class Dashboard extends Component {
                                 <th>Type</th>
                                 <th>Author</th>
                                 <th>Date</th>
-                                <th>Delete</th>
                             </tr>
                         </thead>
                         <tbody>

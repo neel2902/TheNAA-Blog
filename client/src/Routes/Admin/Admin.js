@@ -1,61 +1,54 @@
 import React, { useState } from "react";
 import { Button, FormGroup, FormControl } from "react-bootstrap";
+import Dashboard from "./Dashboard";
+const bcrypt = require('bcryptjs');
+const hash = '$2y$10$Yh8p6QCBk.piJIE8ElxKM.Oj.2ue9/4D1jVaMppmKnx90BXmjurn2';
 
-export default function Login() {
+function Login() {
     const [name, setName] = useState("");
     const [password, setPassword] = useState("");
-
-    function validateForm() {
-        return name.length > 0 && password.length > 0;
-    }
+    const [showdashboard, setShowdashboard] = useState(false);
 
     async function handleSubmit(event) {
         event.preventDefault();
-        try {
-            var myHeaders = new Headers();
-            var formdata = new FormData();
-            formdata.append("name", "admin");
-            formdata.append("secret", "I@am@admin@07");
-
-            var requestOptions = {
-                method: 'POST',
-                headers: myHeaders,
-                body: formdata,
-                redirect: 'follow'
-            };
-
-            fetch("https://localhost:5000/login", requestOptions)
-                .then(result => console.log(result))
-                .catch(error => console.log('error', error));
-        } catch (e) {
-            alert(e.message);
+        const result = await bcrypt.compare(password, hash);
+        console.log(result);
+        if (name === 'admin' && result) {
+            setShowdashboard(true);
+        }
+        else {
+            alert("Incorrect username or password, try again!");
         }
     }
 
     return (
-        <div style={{ width: '300px', margin: '3em auto' }}>
-            <form onSubmit={handleSubmit}>
-                <FormGroup controlId="text" bsSize="large">
-                    <label>Name</label>
-                    <FormControl
-                        autoFocus
-                        type="text"
-                        value="admin"
-                        onChange={e => setName(e.target.value)}
-                    />
-                </FormGroup>
-                <FormGroup controlId="password" bsSize="large">
-                    <label>Password</label>
-                    <FormControl
-                        value="I@am@admin@07"
-                        onChange={e => setPassword(e.target.value)}
-                        type="password"
-                    />
-                </FormGroup>
-                <Button block bsSize="large" type="submit">
-                    Login
+        !showdashboard ?
+            <div style={{ width: '300px', margin: '3em auto' }}>
+                <form onSubmit={handleSubmit}>
+                    <FormGroup controlId="text" bsSize="large">
+                        <label>Name</label>
+                        <FormControl
+                            autoFocus
+                            type="text"
+                            value={name}
+                            onChange={e => setName(e.target.value)}
+                        />
+                    </FormGroup>
+                    <FormGroup controlId="password" bsSize="large">
+                        <label>Password</label>
+                        <FormControl
+                            value={password}
+                            onChange={e => setPassword(e.target.value)}
+                            type="password"
+                        />
+                    </FormGroup>
+                    <Button block bsSize="large" type="submit">
+                        Login
                 </Button>
-            </form>
-        </div>
+                </form>
+            </div> :
+            <Dashboard />
     );
 }
+
+export default Login;

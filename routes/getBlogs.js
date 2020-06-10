@@ -14,7 +14,7 @@ router.get('/blogs/:postType?',(req,res)=>{
 
 	let blogs;
 
-	client.get(originalUrl),async(err,reply)=>{
+	client.get(req.originalUrl),async(err,reply)=>{
 		if(err || !reply)
 		{
 

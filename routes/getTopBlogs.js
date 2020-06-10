@@ -13,7 +13,7 @@ router.get('/topBlogs/:postType?',(req,res)=>{
 
 	let topBlogs;
 
-	client.get(originalUrl),async (err,reply)=>{
+	client.get(req.originalUrl),async (err,reply)=>{
 		if(err || !reply)
 		{
 

@@ -5,7 +5,9 @@ import Post from '../../components/Post/Post';
 import { Link } from 'react-router-dom';
 import { Container, Button } from 'react-bootstrap';
 import Footer from '../../components/utilities/Footer/Footer';
-import styles from './Home.module.css'
+import styles from './Home.module.css';
+import MetaTags from 'react-meta-tags';
+
 
 const axios = require('axios').default;
 const Features = () => {
@@ -78,6 +80,13 @@ class Home extends Component {
         });
         return (
             <div style={{ backgroundColor: 'white' }}>
+                <MetaTags>
+                    <meta property="og:title" content="THE NAA" />
+                    <meta property="og:description" content="ন - নতুন চিন্তাৰ খোৰাক দিয়াৰ এক প্ৰয়াস " />
+                    <meta property="og:image" content="http://www.thenaa.in/static/media/thenaalogo.f921b688.png" />
+                    <meta property="og:url" content="http://www.thenaa.in/" />
+                    <meta name="twitter:card" content="summary_large_image" />
+                </MetaTags>
                 <Navbar />
                 <Slideshow />
                 <Features />

@@ -6,6 +6,7 @@ import styles from './Fullpost.module.css';
 import Footer from '../../components/utilities/Footer/Footer';
 import Post from '../../components/Post/Post';
 import { Autoplay } from 'swiper/js/swiper.esm';
+import MetaTags from 'react-meta-tags';
 
 class Fullpost extends Component {
     state = {
@@ -66,6 +67,12 @@ class Fullpost extends Component {
 
         return (
             <React.Fragment>
+                <MetaTags>
+                    <title>The NAA</title>
+                    <meta name="description" content={this.state.title} />
+                    <meta property="og:title" content={this.state.title} />
+                    <meta property="og:image" content={this.state.image} />
+                </MetaTags>
                 <Navbar />
                 <Container className={styles.container}>
                     <h1 className={styles.lead}>{this.state.title}</h1>

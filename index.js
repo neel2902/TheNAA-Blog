@@ -16,7 +16,9 @@ let AuthorDao = require(path.join(__dirname,'src','authorDao.js'));
 
 let app = express();
 
-const port = process.env.PORT || 5000
+const port = process.env.PORT || 5000;
+
+//console.log('redis url = ',process.env.REDISCLOUD_URL);
 
 MongoClient.connect(
 
@@ -42,7 +44,7 @@ MongoClient.connect(
 
 	app.use(cors());
   	
-	process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
+  app.use(logger('combined'));
   	
 	app.set('trust proxy', 1) // trust first proxy to enable react app
 

@@ -16,7 +16,7 @@ let AuthorDao = require(path.join(__dirname,'src','authorDao.js'));
 
 let app = express();
 
-const port = process.env.PORT;
+const port = process.env.PORT || 5000;
 
 MongoClient.connect(
 

@@ -29,8 +29,7 @@ class Addpost extends Component {
         console.log(this.state);
 
         var myHeaders = new Headers();
-        // myHeaders.append("Authorization", "Bearer eyJhbGciOiJIUzUxMiJ9.eyJzdWIiOiJhZG1pbkBnbWFpbC5jb20iLCJleHAiOjE1OTAwOTkxNDAsImlhdCI6MTU5MDA4MTE0MH0.BMM_c1LaTwQNsQ3Usg84-OrGQokP2Zm5cCiplBXRroaKqWGWQcfAHhoSC67nBee7yquTDOIuONm1m7McFYcQRg");
-        // myHeaders.append("Cookie", "connect.sid=s%3ACdRTVkX_8YCQfX7e_QBhrGFga9qFWvoV.m%2BPs8Q2hsr4StmX0wnf7HsmP8DHHjwXU2VByozznvko");
+
 
         var formdata = new FormData();
         formdata.append("type", this.state.type);

@@ -69,9 +69,9 @@ class Fullpost extends Component {
             <React.Fragment>
                 <MetaTags>
                     <title>The NAA</title>
-                    <meta name="description" content={this.state.title} />
-                    <meta property="og:title" content={this.state.title} />
-                    <meta property="og:image" content={this.state.image} />
+                    <meta id="description" name="description" content={this.state.title} />
+                    <meta id="title" property="og:title" content={this.state.title} />
+                    <meta id="post-img" property="og:image" content={'http://www.thenaa.in/' + this.state.image} />
                 </MetaTags>
                 <Navbar />
                 <Container className={styles.container}>

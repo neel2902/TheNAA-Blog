@@ -81,9 +81,9 @@ class Home extends Component {
         return (
             <div style={{ backgroundColor: 'white' }}>
                 <MetaTags>
-                    <meta property="og:title" content="THE NAA" />
+                    <meta id="title" property="og:title" content="THE NAA" />
                     <meta property="og:description" content="ন - নতুন চিন্তাৰ খোৰাক দিয়াৰ এক প্ৰয়াস " />
-                    <meta property="og:image" content="http://www.thenaa.in/static/media/thenaalogo.f921b688.png" />
+                    <meta id="home-image" property="og:image" content="http://www.thenaa.in/static/media/thenaalogo.f921b688.png" />
                     <meta property="og:url" content="http://www.thenaa.in/" />
                     <meta name="twitter:card" content="summary_large_image" />
                 </MetaTags>

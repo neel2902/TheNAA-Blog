@@ -8,7 +8,7 @@ let BlogsDao = require(path.join(__dirname,'..','src','blogsDao.js'));
 
 var redis = require('redis');
 
-var client = redis.createClient('redis://redis-19391.c59.eu-west-1-2.ec2.cloud.redislabs.com:19391', {no_ready_check: true});
+var client = redis.createClient('redis-19391.c59.eu-west-1-2.ec2.cloud.redislabs.com:19391', {no_ready_check: true});
 
 router.get('/blogs/:postType?',(req,res)=>{
 

@@ -18,6 +18,9 @@ router.get('/topBlogs/:postType?',(req,res)=>{
 	let topBlogs;
 
 	client.get(req.originalUrl),async (err,reply)=>{
+
+		console.log('url is ',req.originalUrl, 'reply is ', reply.toString());
+		
 		if(err || !reply)
 		{
 

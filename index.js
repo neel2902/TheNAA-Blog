@@ -44,7 +44,7 @@ MongoClient.connect(
 
 	app.use(cors());
   	
-	process.env.NODE_ENV !== 'production' && app.use(logger('combined'));
+  app.use(logger('combined'));
   	
 	app.set('trust proxy', 1) // trust first proxy to enable react app
 

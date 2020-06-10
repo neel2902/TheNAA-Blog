@@ -18,6 +18,8 @@ router.get('/blog/:postType/:postId',(req,res)=>{
 
 	client.get(req.originalUrl),async(err,reply)=>{
 
+		console.log('url is ',req.originalUrl, 'reply is ', reply.toString());
+
 		if(err || !reply)
 		{
 			try{

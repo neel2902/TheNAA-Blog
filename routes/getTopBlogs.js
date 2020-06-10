@@ -33,7 +33,7 @@ router.get('/topBlogs/:postType?',(req,res)=>{
 		}
 		else
 		{
-			return res.status(200).json(reply);
+			return res.status(200).json(reply.toString());
 		}
 	}
 })

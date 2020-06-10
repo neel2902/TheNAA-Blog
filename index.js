@@ -18,6 +18,8 @@ let app = express();
 
 const port = process.env.PORT || 5000;
 
+console.log('redis url = ',process.env.REDISCLOUD_URL);
+
 MongoClient.connect(
 
   process.env.NAA_DB_URI,

@@ -36,7 +36,7 @@ router.get('/blog/:postType/:postId',(req,res)=>{
 		}
 		else
 		{
-			return res.status(200).json(reply);
+			return res.status(200).json(reply.toString());
 		}
 	}
 })

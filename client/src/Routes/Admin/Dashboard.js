@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { Component, useState, useEffect } from 'react';
 import axios from 'axios';
 import { Button, Modal, Container, Table, Form, Col } from 'react-bootstrap';
 import Navbar from '../../components/utilities/Navbar/Navbar';
@@ -14,7 +14,7 @@ class Addpost extends Component {
         author: '',
         content: '',
         type: 'poem',
-        image: null
+        image: null,
     }
 
     componentDidMount() {
@@ -49,7 +49,7 @@ class Addpost extends Component {
             redirect: 'follow'
         };
 
-        fetch("http://localhost:5000/addBlog", requestOptions)
+        fetch("/addBlog", requestOptions)
             .then(response => response.text())
             .then(result => {
                 this.setState({
@@ -61,8 +61,8 @@ class Addpost extends Component {
                     type: 'poem',
                     image: null
                 })
+                this.props.callback(true);
                 console.log(result);
-                this.props.rerenderParentCallback();
             })
             .catch(error => console.log('error', error));
     }
@@ -206,67 +206,59 @@ class TableRow extends Component {
 }
 
 
-class Dashboard extends Component {
-    state = {
-        posts: []
-    }
+const Dashboard = () => {
+    const [posts, setPosts] = useState([]);
 
-    componentDidMount() {
+    useEffect(() => {
         axios.get('/blogs')
             .then(res => {
-                this.setState({
-                    posts: res.data
-                })
+                setPosts(res.data);
             })
             .catch(err => {
                 console.error(err);
             })
-    }
-    componentDidUpdate() {
-        axios.get('/blogs')
-            .then(res => {
-                this.setState({
-                    posts: res.data
+    }, []);
+
+    const rerendercallback = (shouldupdate) => {
+        if (shouldupdate) {
+            setPosts([]);
+            axios.get('/blogs')
+                .then(res => {
+                    setPosts(res.data);
                 })
-            })
-            .catch(err => {
-                console.error(err);
-            })
-    }
-    rerenderParentCallback = () => {
-        this.forceUpdate();
-    }
-    render() {
-        const rows = this.state.posts.map(post => {
-            const date = new Date(post.date_uploaded).toDateString();
-            return <TableRow id={post._id} title={post.title} type={post.type} author={post.author} date={date} />
-        })
-
-        return (
-            <React.Fragment>
-                <Navbar />
-                <Container className="my-5">
-                    <Addpost rerenderParentCallback={this.rerenderParentCallback} />
-                    <Table striped bordered hover>
-                        <thead>
-                            <tr>
-                                <th>Post ID</th>
-                                <th>Title</th>
-                                <th>Type</th>
-                                <th>Author</th>
-                                <th>Date</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            {rows}
-                        </tbody>
-                    </Table>
-                </Container>
-            </React.Fragment>
-        )
+                .catch(err => {
+                    console.error(err);
+                })
+        }
     }
 
+    const rows = posts.map(post => {
+        const date = new Date(post.date_uploaded).toDateString();
+        return <TableRow id={post._id} title={post.title} type={post.type} author={post.author} date={date} />
+    })
 
+    return (
+        <React.Fragment>
+            <Navbar />
+            <Container className="my-5">
+                <Addpost callback={rerendercallback} />
+                <Table striped bordered hover>
+                    <thead>
+                        <tr>
+                            <th>Post ID</th>
+                            <th>Title</th>
+                            <th>Type</th>
+                            <th>Author</th>
+                            <th>Date</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {rows}
+                    </tbody>
+                </Table>
+            </Container>
+        </React.Fragment>
+    )
 }
 
 export default Dashboard;

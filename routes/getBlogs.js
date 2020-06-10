@@ -5,7 +5,7 @@ let router = express.Router();
 const path = require('path');
 
 let BlogsDao = require(path.join(__dirname,'..','src','blogsDao.js'));
-
+var url = require('url');
 var redis = require('redis');
 
 var redisURL = url.parse(process.env.REDISCLOUD_URL);
